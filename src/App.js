@@ -1,52 +1,35 @@
-import React, { useState } from "react";
-import React from 'react';
-import Card from './components/Card';
-import Button from './components/Button';
-import getContentCards from './assets/getContentCards';
-import './global.css';
+import React from "react";
+import Component from "./componentes/Component";
+import getContentComponents from "./assets/getContentComponents";
+import Component2 from "./componentes/Component2";
+import getContentComponents2 from "./assets/getContentComponents2";
+import Component3 from "./componentes/Component3";
+import getContentComponents3 from "./assets/getContentComponents3";
+import "./global.css";
 
-function App() {
-    const data= getContentCards();
-    // console.log(data);
-    // const card = data[0];
-    const [quantity, setQuantity] = useState(5);
-    const remove =() =>{
-        setQuantity(quantity - 1);
-    }
-    const add =() =>{
-        setQuantity(quantity + 1);
-    }
-    const card=[];
-    for(let i = 0 ; i < quantity ; i++){
-        card.push(<Card data = {card[i]} />);
-    }
-    return (
-        <>
-            <section className = "button-container">
-                <button 
-                content ="Remove Card" 
-                id ="removeCard" 
-                click={remove}
-                disabled = {quantity <= 0}
-                />
-                {quantity}
-                <button 
-                content ="Add Card" 
-                id ="addCard" 
-                click={add}
-                disabled = {quantity >= 5}
-                />
-            </section>
-            <section className='container-cards'>
-            {cards }
-            {
-                // data.map((card)=>{
-                // return <Card data = {card} />;
-                // })
-            }
-            </section>
-        </>
-    );
+export default function App() {
+  const data = getContentComponents();
+  const data1 = getContentComponents2();
+  const data2 = getContentComponents3();
+  //console.log(data);
+  //const card = data[0]
+  return (
+    <div className="container_components">
+      <div>
+        {data.map((component) => {
+          return <Component data={component} />;
+        })}
+      </div>
+      <div>
+        {data1.map((component) => {
+          return <Component2 data1={component} />;
+        })}
+      </div>
+      <div>
+        {data2.map((component) => {
+          return <Component3 data2={component} />;
+        })}
+      </div>
+    </div>
+  );
 }
-
-export default App;
